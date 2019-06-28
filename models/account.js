@@ -27,7 +27,7 @@ const AccountSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  boardObjectId: ObjectId,
+  boardObjectId: mongoose.ObjectId,
   numberOfBoards: Number
 })
 
