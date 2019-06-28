@@ -50,6 +50,11 @@ function createAccount(accountObject){
 function updateAccount(accountId,newAccountSettings){
   return AccountCollection.findByIdAndUpdate(accountId,newAccountSettings)
 }
+
+//Delete an item in the database
+function deleteAccount(accountId){
+  return AccountCollection.findByIdAndDelete(accountId)
+}
 /* Step 5
  *
  * TODO: export all functions from this file by adding their names as keys to this
@@ -59,5 +64,6 @@ module.exports = {
   getAllAcounts,
   getAccount,
   createAccount,
-  updateAccount
+  updateAccount,
+  deleteAccount
 }

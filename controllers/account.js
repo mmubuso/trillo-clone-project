@@ -46,6 +46,14 @@ accountRouter.put('/:accountId',(req,res) => {
     })
 })
 
+//Path to delete an account
+accountRouter.delete('/:accountId',(req,res) => {
+  accountApi.deleteAccount(req.params.accountId)
+    .then(() => {
+      res.send('Account was deleted')
+    })
+})
+
 
 /* Step 6
  *
