@@ -45,6 +45,14 @@ const boardRouter = express.Router({mergeParams: true})
     })
  })
 
+ //Get a specific board 
+ boardRouter.get('/:boardId',(req,res) => {
+   boardApi.getBoard(req.params.boardId)
+    .then(board => {
+      res.send(board)
+    })
+ })
+
 //creates a new trillo board 
 boardRouter.post('/',(req,res) => {
   boardApi.createBoard(req.params.accountId,req.body)

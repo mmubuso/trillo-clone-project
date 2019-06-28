@@ -50,6 +50,11 @@ function getAllBoardsForOneAccount(accountId) {
   return BoardCollection.find({accountObjectId: accountId})
 }
 
+//Return a specific board
+function getBoard(boardId){
+  return BoardCollection.findById(boardId)
+}
+
 //Create a board
 function createBoard(accountId,newBoard){
   newBoard.accountObjectId = accountId
@@ -69,5 +74,6 @@ function createBoard(accountId,newBoard){
  */
 module.exports = {
   getAllBoardsForOneAccount,
-  createBoard
+  createBoard,
+  getBoard
 }
