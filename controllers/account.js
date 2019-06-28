@@ -30,9 +30,16 @@ accountRouter.get('/:accountId', (req,res) => {
     })
 })
 
+//Path to add one account to 
+accountRouter.post('/',(req,res) => {
+  accountApi.createAccount(req.body)
+    .then(() => {
+      res.send('account was created')
+    })
+})
 
 
-
+//Path 
 /* Step 6
  *
  * Export the router from the file.

@@ -22,8 +22,10 @@ const AccountSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  boardObjectId: mongoose.ObjectId,
-  numberOfBoards: Number
+  numberOfBoards: {
+    type: Number,
+    default: 0
+  }
 })
 
 //Collection API
@@ -39,7 +41,10 @@ function getAccount(accountId){
   return AccountCollection.findById(accountId)
 }
 
-
+//Post a new account to the databse
+function createAccount(accountObject){
+  return AccountCollection.create(accountObject)
+}
 /* Step 5
  *
  * TODO: export all functions from this file by adding their names as keys to this
@@ -47,5 +52,6 @@ function getAccount(accountId){
  */
 module.exports = {
   getAllAcounts,
-  getAccount
+  getAccount,
+  createAccount
 }
