@@ -24,7 +24,7 @@ accountRouter.get('/', (req, res) => {
 
 //Path to get one account
 accountRouter.get('/:accountId', (req,res) => {
-  accountApi.getAccount()
+  accountApi.getAccount(req.params.accountId)
     .then(account => {
       res.send(account)
     })
@@ -38,8 +38,15 @@ accountRouter.post('/',(req,res) => {
     })
 })
 
+//Path to update a specific account
+accountRouter.put('/:accountId',(req,res) => {
+  accountApi.updateAccount(req.params.accountId,req.body)
+    .then(() => {
+      res.send('Account was updated')
+    })
+})
 
-//Path 
+
 /* Step 6
  *
  * Export the router from the file.
