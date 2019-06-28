@@ -18,6 +18,8 @@ const methodOverride = require('method-override')
  *
  */
 const { accountRouter } = require('./controllers/account.js')
+const { boardRouter } = require('./controllers/board.js')
+
 
 
 /* Step 3
@@ -62,6 +64,7 @@ app.set('view engine', 'hbs')
  * the paths defined in the router.
  */
 app.use('/accounts', accountRouter)
+app.use('/accounts/:accountId/boards', boardRouter)
 
 /* Step 5
  *
