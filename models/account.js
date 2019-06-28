@@ -3,20 +3,15 @@
  * model.
  */
 
-/* Step 1
- *
- * TODO: import mongoose connection
- * NOTE: skip this if you are not using mongoose
+/* 
+ *Bring connection.js file to link to mongo
  *
  */
 const mongoose = require('./connection.js')
 
 
-/* Step 2
- *
- * TODO: create model schema 
- * NOTE: skip this if you are not using mongoose
- *
+/* 
+ *Schema for our database
  */
 const AccountSchema = new mongoose.Schema({
  name: {
@@ -31,23 +26,19 @@ const AccountSchema = new mongoose.Schema({
   numberOfBoards: Number
 })
 
-/* Step 3
- *
- * TODO: create collection API
- * NOTE: skip this if you are not using mongoose
- *
- */
+//Collection API
 const AccountCollection = mongoose.model('Account', AccountSchema)
 
-/* Step 4
- *
- * TODO: delete this it's just a sample
- *
- */
-
+//Fetch all account items from the database
 function getAllAcounts() {
   return AccountCollection.find()
 }
+
+//Fetch one specific item from the database
+function getAccount(accountId){
+  return AccountCollection.findById(accountId)
+}
+
 
 /* Step 5
  *
@@ -55,5 +46,6 @@ function getAllAcounts() {
  * object
  */
 module.exports = {
-  getAllAcounts
+  getAllAcounts,
+  getAccount
 }
