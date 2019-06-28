@@ -8,24 +8,24 @@ const express = require('express')
  * Import the api files from the models
  *
  * TODO: change the file path to the models file you'll need to use.
- * TODO: rename this from `templateApi` to something more sensible (e.g:
+ * TODO: rename this from `boardApi` to something more sensible (e.g:
  * `shopsAPI`)
  *
  * NOTE: You may need to import more than one API to create the 
  * controller you need.
  * 
  */
-const templateApi = require('../models/template.js')
+const boardApi = require('../models/board.js')
 
 /* Step 3 
  * 
  * Create a new router.
  *
  * the router will "contain" all the request handlers that you define in this file.
- * TODO: rename this from templateRouter to something that makes sense. (e.g:
+ * TODO: rename this from boardRouter to something that makes sense. (e.g:
  * `shopRouter`)
  */
-const templateRouter = express.Router()
+const boardRouter = express.Router({mergeParams: true})
 
 /* Step 4
  * 
@@ -36,9 +36,24 @@ const templateRouter = express.Router()
  *
  * TODO: delete this handler; it's just a sample
  */ 
-templateRouter.get('/', (req, res) => {
-  res.send(templateApi.getHelloWorldString())
+
+ //Get all boards associated with accountId
+ boardRouter.get('/',(req,res) => {
+   boardApi.getAllBoardsForOneAccount(req.params.accountId)
+    .then(accountBoards => {
+      res.send(accountBoards)
+    })
+ })
+
+//creates a new trillo board 
+boardRouter.post('/',(req,res) => {
+  boardApi.createBoard(req.params.accountId,req.body)
+    .then(() => {
+      res.send('created new Board')
+    })
 })
+
+
 
 /* Step 6
  *
@@ -46,5 +61,5 @@ templateRouter.get('/', (req, res) => {
  *
  */
 module.exports = {
-  templateRouter
+  boardRouter
 }

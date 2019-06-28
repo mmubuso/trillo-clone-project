@@ -9,16 +9,8 @@
  * NOTE: skip this if you are not using mongoose
  *
  */
-//const mongoose = require('./connection.js')
+const mongoose = require('./connection.js')
 
-/* Step 1 alternative
- *
- * TODO: make a global variable to act as an in memory database. 
- * NOTE: doing this WILL NOT persist your data and you will loose
- * your data once you stop running your server.
- *
- */
-global.sampleModel = [];
 
 /* Step 2
  *
@@ -26,9 +18,23 @@ global.sampleModel = [];
  * NOTE: skip this if you are not using mongoose
  *
  */
-//const SampleModelSchema = new mongoose.Schema({
-//  name: String
-//})
+const BoardSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  backgroundColor:{
+    type: String
+  },
+  numberOfLists: {
+    type: Number,
+    default: 0
+  },
+  accountObjectId: {
+    type: mongoose.Types.ObjectId,
+    required: true
+  }
+})
 
 /* Step 3
  *
@@ -36,16 +42,25 @@ global.sampleModel = [];
  * NOTE: skip this if you are not using mongoose
  *
  */
-//const SampleCollection = mongoose.model('Sample', SampleModelSchema)
+const BoardCollection = mongoose.model('Board', BoardSchema)
 
-/* Step 4
- *
- * TODO: delete this it's just a sample
- *
- */
-function getHelloWorldString() {
-  return 'hello world'
+
+//Returns all boards associated with accountId
+function getAllBoardsForOneAccount(accountId) {
+  return BoardCollection.find({accountObjectId: accountId})
 }
+
+//Create a board
+function createBoard(accountId,newBoard){
+  newBoard.accountObjectId = accountId
+  console.log(newBoard.accountObjectId)
+  return BoardCollection.create(newBoard)
+}
+
+
+//
+
+
 
 /* Step 5
  *
@@ -53,5 +68,6 @@ function getHelloWorldString() {
  * object
  */
 module.exports = {
-  getHelloWorldString
+  getAllBoardsForOneAccount,
+  createBoard
 }
