@@ -19,6 +19,7 @@ const methodOverride = require('method-override')
  */
 const { accountRouter } = require('./controllers/account.js')
 const { boardRouter } = require('./controllers/board.js')
+const { listRouter } = require('./controllers/list.js')
 
 
 
@@ -65,6 +66,7 @@ app.set('view engine', 'hbs')
  */
 app.use('/accounts', accountRouter)
 app.use('/accounts/:accountId/boards', boardRouter)
+app.use('/accounts/:accountId/boards/lists/:boardId', listRouter )
 
 /* Step 5
  *
