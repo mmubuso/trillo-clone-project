@@ -69,6 +69,15 @@ boardRouter.put('/:boardId',(req,res) => {
     })
 })
 
+//Delete an exisiting board
+boardRouter.delete('/:boardId',(req,res) => {
+  boardApi.deleteBoard(req.params.boardId)
+    .then(() => {
+      res.send('Board was deleted')
+    })
+})
+
+
 /* Step 6
  *
  * Export the router from the file.

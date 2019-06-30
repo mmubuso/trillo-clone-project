@@ -67,7 +67,10 @@ function updatedBoard(boardId,newBoard){
   return BoardCollection.findByIdAndUpdate(boardId,newBoard)
 }
 
-
+//Delete a board
+function deleteBoard(boardId){
+  return BoardCollection.findByIdAndDelete(boardId)
+}
 
 
 
@@ -80,5 +83,6 @@ module.exports = {
   getAllBoardsForOneAccount,
   createBoard,
   getBoard,
-  updatedBoard
+  updatedBoard,
+  deleteBoard
 }
