@@ -58,7 +58,6 @@ function getBoard(boardId){
 //Create a board
 function createBoard(accountId,newBoard){
   newBoard.accountObjectId = accountId
-  console.log(newBoard.accountObjectId)
   return BoardCollection.create(newBoard)
 }
 
