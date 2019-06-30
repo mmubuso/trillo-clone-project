@@ -66,7 +66,7 @@ app.set('view engine', 'hbs')
  */
 app.use('/accounts', accountRouter)
 app.use('/accounts/:accountId/boards', boardRouter)
-app.use('/accounts/:accountId/boards/lists/:boardId', listRouter )
+app.use('/accounts/:accountId/boards/:boardId/lists', listRouter )
 
 /* Step 5
  *
