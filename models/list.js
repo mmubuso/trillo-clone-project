@@ -50,11 +50,22 @@ function getAllListsByBoardId(boardId) {
   return ListCollection.find({boardObjectId: boardId})
 }
 
+function getList(listId){
+  return ListCollection.findById(listId)
+}
+
+function createList(boardId,newlist){
+  console.log(boardId)
+  newlist.boardObjectId = boardId
+  return ListCollection.create(newlist)
+}
 /* Step 5
  *
  * TODO: export all functions from this file by adding their names as keys to this
  * object
  */
 module.exports = {
-  getAllListsByBoardId
+  getAllListsByBoardId,
+  getList,
+  createList
 }
