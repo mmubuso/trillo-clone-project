@@ -62,8 +62,12 @@ function createBoard(accountId,newBoard){
   return BoardCollection.create(newBoard)
 }
 
+//Update a board  by Id
+function updatedBoard(boardId,newBoard){
+  return BoardCollection.findByIdAndUpdate(boardId,newBoard)
+}
 
-//
+
 
 
 
@@ -75,5 +79,6 @@ function createBoard(accountId,newBoard){
 module.exports = {
   getAllBoardsForOneAccount,
   createBoard,
-  getBoard
+  getBoard,
+  updatedBoard
 }

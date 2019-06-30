@@ -61,7 +61,13 @@ boardRouter.post('/',(req,res) => {
     })
 })
 
-
+//Update an exisiting board
+boardRouter.put('/:boardId',(req,res) => {
+  boardApi.updatedBoard(req.params.boardId,req.body)
+    .then(() => {
+      res.send('Updated Board')
+    })
+})
 
 /* Step 6
  *
