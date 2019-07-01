@@ -25,31 +25,38 @@ const cardApi = require('../models/card.js')
  * TODO: rename this from templateRouter to something that makes sense. (e.g:
  * `shopRouter`)
  */
-const cardRouter = express.Router({mergeParams: true})
+const cardRouter = express.Router({ mergeParams: true })
 
 
 //Get all cards with a specific Id
 cardRouter.get('/', (req, res) => {
   cardApi.getAllCardsByListId(req.params.listId)
-  .then(cards => { 
-    res.send(cards)
-  })
+    .then(cards => {
+      res.send(cards)
+    })
 })
 
 //Get a specific card 
 cardRouter.get('/:cardId', (req, res) => {
   cardApi.getCard(req.params.cardId)
-  .then(card => { 
-    res.send(card)
-  })
+    .then(card => {
+      res.send(card)
+    })
 })
 
 //Create a card object
 cardRouter.post('/', (req, res) => {
-  cardApi.createCard(req.params.listId,req.body)
-  .then(() => { 
-    res.send("card created")
-  })
+  cardApi.createCard(req.params.listId, req.body)
+    .then(() => {
+      res.send("card created")
+    })
+})
+
+cardRouter.put('/:cardId', (req, res) => {
+  cardApi.updateCard(req.params.cardId, req.body)
+    .then(() => {
+      res.send('Item was updated')
+    })
 })
 
 /* Step 6

@@ -19,7 +19,7 @@ const mongoose = require('./connection.js')
  *
  */
 const CardSchema = new mongoose.Schema({
- description: {
+  description: {
     type: String,
     required: true
   },
@@ -49,15 +49,21 @@ function getAllCardsByListId(listId) {
 }
 
 //Get a specific card from the database
-function getCard(cardId){
+function getCard(cardId) {
   return CardCollection.findById(cardId)
 }
 
 //Create and add a card to the database
-function createCard(listId,newCard){
+function createCard(listId, newCard) {
   newCard.listObjectId = listId
   return CardCollection.create(newCard)
 }
+
+//Update a card with new information
+function updateCard(cardId, updatedCard) {
+  return CardCollection.findByIdAndUpdate(cardId, updatedCard)
+}
+
 
 /* Step 5
  *
@@ -67,5 +73,6 @@ function createCard(listId,newCard){
 module.exports = {
   getAllCardsByListId,
   getCard,
-  createCard
+  createCard,
+  updateCard
 }
