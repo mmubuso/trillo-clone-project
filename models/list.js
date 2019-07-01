@@ -68,6 +68,10 @@ function updateList(listId,updatedList){
   return ListCollection.findByIdAndUpdate(listId,updatedList)
 }
 
+//delete an item from the database 
+function deleteList(listId){
+  return ListCollection.findByIdAndDelete(listId)
+}
 
 /* Step 5
  *
@@ -78,5 +82,6 @@ module.exports = {
   getAllListsByBoardId,
   getList,
   createList,
-  updateList
+  updateList,
+  deleteList
 }

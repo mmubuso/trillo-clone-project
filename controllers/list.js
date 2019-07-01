@@ -58,6 +58,14 @@ listRouter.put('/:listId',(req,res) => {
     })
 })
 
+//Delete a list item from the database
+listRouter.delete('/:listId',(req,res) => {
+  listApi.deleteList(req.params.listId)
+    .then(() => {
+      res.send('Delete an item')
+    })
+})
+
 
 /* Step 6
  *
