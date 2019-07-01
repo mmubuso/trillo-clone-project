@@ -1,9 +1,13 @@
 <h1>Accounts</h1>
+<form action="/accounts/new" method="get">
+    <button type="submit">Create Account</button>
+</form>
 
 {{#each accounts}}
     <div>
-        <div>name: {{name}}</div>
+        <div>name: <a href="/accounts/{{_id}}">{{name}}</a> </div>
         <div>username: {{username}}</div>
+        <div>_id {{_id}} </div>
     </div>
     <br>
 {{/each}}
