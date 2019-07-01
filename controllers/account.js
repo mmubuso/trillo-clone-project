@@ -18,7 +18,7 @@ const accountRouter = express.Router()
 accountRouter.get('/', (req, res) => {
   accountApi.getAllAcounts()
     .then(accounts => {
-      res.render('accounts/accounts',{accounts})
+      res.render('accounts/accounts', { accounts })
     })
 })
 
@@ -27,11 +27,19 @@ accountRouter.get('/new', (req, res) => {
   res.render('accounts/createAccount')
 })
 
+//Gets edit form from views
+accountRouter.get('/:accountId/edit', (req, res) => {
+  accountApi.getAccount(req.params.accountId)
+    .then(account => {
+      res.render('accounts/editFormAccount',{account})
+    })
+})
+
 //Path to get one account
 accountRouter.get('/:accountId', (req, res) => {
   accountApi.getAccount(req.params.accountId)
     .then(account => {
-      res.render('accounts/account',{account})
+      res.render('accounts/account', { account })
     })
 })
 
