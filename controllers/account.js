@@ -31,7 +31,7 @@ accountRouter.get('/new', (req, res) => {
 accountRouter.get('/:accountId', (req, res) => {
   accountApi.getAccount(req.params.accountId)
     .then(account => {
-      res.send(account)
+      res.render('accounts/account',{account})
     })
 })
 
