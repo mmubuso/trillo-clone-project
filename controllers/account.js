@@ -55,7 +55,7 @@ accountRouter.post('/', (req, res) => {
 accountRouter.put('/:accountId', (req, res) => {
   accountApi.updateAccount(req.params.accountId, req.body)
     .then(() => {
-      res.send('Account was updated')
+      res.redirect('/accounts')
     })
 })
 
