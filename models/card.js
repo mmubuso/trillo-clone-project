@@ -64,6 +64,10 @@ function updateCard(cardId, updatedCard) {
   return CardCollection.findByIdAndUpdate(cardId, updatedCard)
 }
 
+//Delete a card from the database
+function deleteCard(cardId){
+  return CardCollection.findByIdAndDelete(cardId)
+}
 
 /* Step 5
  *
@@ -74,5 +78,6 @@ module.exports = {
   getAllCardsByListId,
   getCard,
   createCard,
-  updateCard
+  updateCard,
+  deleteCard
 }

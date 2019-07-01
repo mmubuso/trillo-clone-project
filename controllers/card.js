@@ -52,10 +52,19 @@ cardRouter.post('/', (req, res) => {
     })
 })
 
+//Update a card with new information
 cardRouter.put('/:cardId', (req, res) => {
   cardApi.updateCard(req.params.cardId, req.body)
     .then(() => {
-      res.send('Item was updated')
+      res.send('Card was updated')
+    })
+})
+
+//Delete a card from the database
+cardRouter.delete('/:cardId', (req, res) => {
+  cardApi.deleteCard(req.params.cardId)
+    .then(() => {
+      res.send('Card was deleted')
     })
 })
 
