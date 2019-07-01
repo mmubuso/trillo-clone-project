@@ -17,13 +17,18 @@ const accountRouter = express.Router()
 // Path to get all accounts
 accountRouter.get('/', (req, res) => {
   accountApi.getAllAcounts()
-    .then(accounts =>{
+    .then(accounts => {
       res.send(accounts)
     })
 })
 
+//Path to form making an account
+accountRouter.get('/new', (req, res) => {
+  res.render('accounts/createAccount')
+})
+
 //Path to get one account
-accountRouter.get('/:accountId', (req,res) => {
+accountRouter.get('/:accountId', (req, res) => {
   accountApi.getAccount(req.params.accountId)
     .then(account => {
       res.send(account)
@@ -31,7 +36,7 @@ accountRouter.get('/:accountId', (req,res) => {
 })
 
 //Path to add one account to 
-accountRouter.post('/',(req,res) => {
+accountRouter.post('/', (req, res) => {
   accountApi.createAccount(req.body)
     .then(() => {
       res.send('account was created')
@@ -39,15 +44,15 @@ accountRouter.post('/',(req,res) => {
 })
 
 //Path to update a specific account
-accountRouter.put('/:accountId',(req,res) => {
-  accountApi.updateAccount(req.params.accountId,req.body)
+accountRouter.put('/:accountId', (req, res) => {
+  accountApi.updateAccount(req.params.accountId, req.body)
     .then(() => {
       res.send('Account was updated')
     })
 })
 
 //Path to delete an account
-accountRouter.delete('/:accountId',(req,res) => {
+accountRouter.delete('/:accountId', (req, res) => {
   accountApi.deleteAccount(req.params.accountId)
     .then(() => {
       res.send('Account was deleted')
