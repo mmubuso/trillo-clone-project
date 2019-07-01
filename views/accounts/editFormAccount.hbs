@@ -1,0 +1,16 @@
+<form method="POST" action="/accounts/{{account._id}}?_method=PUT">
+
+  <!--
+    Template for creating input form for a string object key called stringMember
+    NOTE: for numeric input fields use `type="number"`
+  -->
+  <input type="text" value="{{account.name}}" name="name" />
+  <input type="text" value="{{account.username}}" name="username" />
+
+
+  <!--
+    Template for creating input form for a boolean object member
+  -->
+  
+  <input type="submit" value="Update Account" />
+</form>
