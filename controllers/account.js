@@ -18,7 +18,7 @@ const accountRouter = express.Router()
 accountRouter.get('/', (req, res) => {
   accountApi.getAllAcounts()
     .then(accounts => {
-      res.send(accounts)
+      res.render('accounts/accounts',{accounts})
     })
 })
 
@@ -39,7 +39,7 @@ accountRouter.get('/:accountId', (req, res) => {
 accountRouter.post('/', (req, res) => {
   accountApi.createAccount(req.body)
     .then(() => {
-      res.send('account was created')
+      res.redirect('/accounts')
     })
 })
 
