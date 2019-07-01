@@ -71,7 +71,10 @@ function deleteBoard(boardId){
   return BoardCollection.findByIdAndDelete(boardId)
 }
 
-
+//Delete all Boards from database
+function deleteAllBoards(){
+  return BoardCollection.deleteMany()
+}
 
 /* Step 5
  *
@@ -83,5 +86,6 @@ module.exports = {
   createBoard,
   getBoard,
   updatedBoard,
-  deleteBoard
+  deleteBoard,
+  deleteAllBoards
 }

@@ -31,12 +31,12 @@ const AccountSchema = new mongoose.Schema({
 //Collection API
 const AccountCollection = mongoose.model('Account', AccountSchema)
 
-//Fetch all account items from the database
+//Fetch all accounts from the database
 function getAllAcounts() {
   return AccountCollection.find()
 }
 
-//Fetch one specific item from the database
+//Fetch one specific account from the database
 function getAccount(accountId){
   return AccountCollection.findById(accountId)
 }
@@ -46,14 +46,19 @@ function createAccount(accountObject){
   return AccountCollection.create(accountObject)
 }
 
-//Update a current item in the database
+//Update a current account in the database
 function updateAccount(accountId,newAccountSettings){
   return AccountCollection.findByIdAndUpdate(accountId,newAccountSettings)
 }
 
-//Delete an item in the database
+//Delete an account in the database
 function deleteAccount(accountId){
   return AccountCollection.findByIdAndDelete(accountId)
+}
+
+//Delete all accounts from database
+function deleteAllAccounts(){
+  return AccountCollection.deleteMany()
 }
 /* Step 5
  *
@@ -65,5 +70,6 @@ module.exports = {
   getAccount,
   createAccount,
   updateAccount,
-  deleteAccount
+  deleteAccount,
+  deleteAllAccounts
 }

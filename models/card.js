@@ -69,6 +69,11 @@ function deleteCard(cardId){
   return CardCollection.findByIdAndDelete(cardId)
 }
 
+//Delete all Cards from database
+function deleteAllCards(){
+  return CardCollection.deleteMany()
+}
+
 /* Step 5
  *
  * TODO: export all functions from this file by adding their names as keys to this
@@ -79,5 +84,6 @@ module.exports = {
   getCard,
   createCard,
   updateCard,
-  deleteCard
+  deleteCard,
+  deleteAllCards
 }
