@@ -2,6 +2,10 @@
 <div>
     <div>{{account.name}}</div>
     <div>{{account.username}}</div>
+    <h3>Boards</h3>
+    {{#each boards}}
+    <div><a href="/accounts/{{accountObjectId}}/boards/{{_id}}">{{name}}</a></div>
+    {{/each}}
     <form method="POST" action="/accounts/{{account._id}}?_method=DELETE">
         <input type="submit" value="Delete" />
     </form>
