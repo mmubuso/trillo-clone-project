@@ -45,7 +45,7 @@ const CardCollection = mongoose.model('Card', CardSchema)
 
 //Get all cards associated with a specific id
 function getAllCardsByListId(listId) {
-  return CardCollection.find({})
+  return CardCollection.find({listObjectId: listId})
 }
 
 //Get a specific card from the database
