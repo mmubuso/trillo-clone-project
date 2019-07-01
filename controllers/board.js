@@ -16,6 +16,8 @@ const express = require('express')
  * 
  */
 const boardApi = require('../models/board.js')
+const listApi = require('../models/list.js')
+const cardApi = require('../models/card.js')
 
 /* Step 3 
  * 
@@ -45,11 +47,17 @@ const boardRouter = express.Router({mergeParams: true})
     })
  })
 
- //Get a specific board 
+ //Get a speific board and all of its lists and cards
  boardRouter.get('/:boardId',(req,res) => {
    boardApi.getBoard(req.params.boardId)
     .then(board => {
-      res.send(board)
+      listApi.getAllListsByBoardId(board)
+        .then(lists => {
+            Promise.all(lists.map(list => cardApi.getAllCardsByListId(list._id)))
+            .then(cards => {
+              res.send({board,lists,cards})
+            })
+        })  
     })
  })
 
