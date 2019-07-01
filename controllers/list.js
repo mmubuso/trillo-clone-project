@@ -27,11 +27,6 @@ const listApi = require('../models/list.js')
  */
 const listRouter = express.Router({mergeParams: true})
 
-// IMPORTANT NOTICE //
-// for all paths besides the root get path, you have to call a
-//    a nested req or res to access the body or parms. Currently
-//    investigating as why we have to do this
-
 listRouter.get('/', (req, res) => {
   listApi.getAllListsByBoardId(req.params.boardId)
     .then(lists => {
@@ -40,19 +35,26 @@ listRouter.get('/', (req, res) => {
 })
 
 //Get a single list 
-listRouter.get('/:listId',(res,req) => {
-  listApi.getList(req.req.params.listId)
+listRouter.get('/:listId',(req,res) => {
+  listApi.getList(req.params.listId)
     .then(list => {
-      res.res.send(list)
+      res.send(list)
     })
 })
 
 //Create a list item to the database
-//
-listRouter.post('/',(res,req) => {
-  listApi.createList(req.req.params.boardId, req.req.body)
+listRouter.post('/',(req,res) => {
+  listApi.createList(req.params.boardId, req.body)
     .then(() => {
-      res.res.send('Object was created')
+      res.send('list was created')
+    })
+})
+
+//Update a list item from the database
+listRouter.put('/:listId',(req,res) => {
+  listApi.updateList(req.params.listId,req.body)
+    .then(() => {
+      res.send('Updated List')
     })
 })
 

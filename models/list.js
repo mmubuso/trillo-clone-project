@@ -46,19 +46,29 @@ const ListCollection = mongoose.model('List', ListSchema)
  * TODO: delete this it's just a sample
  *
  */
+
+ //Get all lists by board ID
 function getAllListsByBoardId(boardId) {
   return ListCollection.find({boardObjectId: boardId})
 }
 
+//Get a single list from DB
 function getList(listId){
   return ListCollection.findById(listId)
 }
 
+//Create a list item
 function createList(boardId,newlist){
-  console.log(boardId)
   newlist.boardObjectId = boardId
   return ListCollection.create(newlist)
 }
+
+//Update an item from the database
+function updateList(listId,updatedList){
+  return ListCollection.findByIdAndUpdate(listId,updatedList)
+}
+
+
 /* Step 5
  *
  * TODO: export all functions from this file by adding their names as keys to this
@@ -67,5 +77,6 @@ function createList(boardId,newlist){
 module.exports = {
   getAllListsByBoardId,
   getList,
-  createList
+  createList,
+  updateList
 }
