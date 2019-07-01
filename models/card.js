@@ -22,6 +22,10 @@ const CardSchema = new mongoose.Schema({
  description: {
     type: String,
     required: true
+  },
+  listObjectId: {
+    type: mongoose.Types.ObjectId,
+    required: true
   }
 })
 
@@ -44,11 +48,24 @@ function getAllCardsByListId(listId) {
   return CardCollection.find({})
 }
 
+//Get a specific card from the database
+function getCard(cardId){
+  return CardCollection.findById(cardId)
+}
+
+//Create and add a card to the database
+function createCard(listId,newCard){
+  newCard.listObjectId = listId
+  return CardCollection.create(newCard)
+}
+
 /* Step 5
  *
  * TODO: export all functions from this file by adding their names as keys to this
  * object
  */
 module.exports = {
-  getAllCardsByListId
+  getAllCardsByListId,
+  getCard,
+  createCard
 }

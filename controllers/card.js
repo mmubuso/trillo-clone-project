@@ -36,7 +36,21 @@ cardRouter.get('/', (req, res) => {
   })
 })
 
+//Get a specific card 
+cardRouter.get('/:cardId', (req, res) => {
+  cardApi.getCard(req.params.cardId)
+  .then(card => { 
+    res.send(card)
+  })
+})
 
+//Create a card object
+cardRouter.post('/', (req, res) => {
+  cardApi.createCard(req.params.listId,req.body)
+  .then(() => { 
+    res.send("card created")
+  })
+})
 
 /* Step 6
  *
