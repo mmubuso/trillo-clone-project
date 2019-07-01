@@ -2,5 +2,7 @@
 <div>
     <div>{{account.name}}</div>
     <div>{{account.username}}</div>
+    <form method="POST" action="/accounts/{{account._id}}?_method=DELETE">
+        <input type="submit" value="Delete" />
+    </form>
 </div>
-

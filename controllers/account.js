@@ -55,7 +55,7 @@ accountRouter.put('/:accountId', (req, res) => {
 accountRouter.delete('/:accountId', (req, res) => {
   accountApi.deleteAccount(req.params.accountId)
     .then(() => {
-      res.send('Account was deleted')
+      res.redirect('/accounts')
     })
 })
 
