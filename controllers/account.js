@@ -8,7 +8,7 @@ const express = require('express')
  * 
  */
 const accountApi = require('../models/account.js')
-
+const boardApi = require('../models/board.js')
 /* 
  * the router will "contain" all the request handlers that you define in this file.
  */
@@ -39,7 +39,10 @@ accountRouter.get('/:accountId/edit', (req, res) => {
 accountRouter.get('/:accountId', (req, res) => {
   accountApi.getAccount(req.params.accountId)
     .then(account => {
-      res.render('accounts/account', { account })
+      boardApi.getAllBoardsForOneAccount(account._id)
+        .then(boards => {
+          res.render('accounts/account', {boards, account})
+        })
     })
 })
 
