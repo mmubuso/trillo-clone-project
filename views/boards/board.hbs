@@ -1,0 +1,10 @@
+<h1>{{board.name}}</h1>
+{{#each lists}}
+<h2 class="list {{_id}}">{{name}}</h2>
+{{/each}}
+
+{{#each cards}}
+<ul>
+    <li class="card {{listObjectId}}">{{description}}</li>
+</ul>
+{{/each}}
