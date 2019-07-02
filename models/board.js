@@ -72,8 +72,8 @@ function deleteBoard(boardId){
 }
 
 //Delete all Boards from database
-function deleteAllBoards(){
-  return BoardCollection.deleteMany()
+function deleteAllBoards(accountId){
+  return BoardCollection.deleteMany({accountObjectId: accountId})
 }
 
 /* Step 5

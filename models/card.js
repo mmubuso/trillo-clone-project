@@ -45,7 +45,7 @@ const CardCollection = mongoose.model('Card', CardSchema)
 
 //Get all cards associated with a specific id
 function getAllCardsByListId(listId) {
-  return CardCollection.find({listObjectId: listId})
+  return CardCollection.find({ listObjectId: listId })
 }
 
 //Get a specific card from the database
@@ -65,13 +65,13 @@ function updateCard(cardId, updatedCard) {
 }
 
 //Delete a card from the database
-function deleteCard(cardId){
+function deleteCard(cardId) {
   return CardCollection.findByIdAndDelete(cardId)
 }
 
 //Delete all Cards from database
-function deleteAllCards(){
-  return CardCollection.deleteMany()
+function deleteAllCards(listId) {
+  return CardCollection.deleteMany({listObjectId: listId})
 }
 
 /* Step 5

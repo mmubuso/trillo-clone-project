@@ -74,8 +74,8 @@ function deleteList(listId){
 }
 
 //Delete all lists from database
-function deleteAllLists(){
-  return ListCollection.deleteMany()
+function deleteAllLists(boardId){
+  return ListCollection.deleteMany({boardObjectId: boardId})
 }
 
 
