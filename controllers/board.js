@@ -61,7 +61,10 @@ boardRouter.get('/:boardId', (req, res) => {
             .then(cards => {
               //send data to get formatted into a usuable form
               cards = formatCardsApi.createNewObj(cards)
-              res.render('boards/board',{ board, lists, cards})
+              let objectId = board._id
+              cards.push({ objectId })
+              console.log(cards)
+              res.render('boards/board', { board, lists, cards })
             })
         })
     })
