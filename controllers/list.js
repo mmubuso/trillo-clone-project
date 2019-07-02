@@ -15,6 +15,7 @@ const express = require('express')
  * controller you need.
  * 
  */
+const cardApi = require('../models/card.js')
 const listApi = require('../models/list.js')
 
 /* Step 3 
@@ -58,11 +59,14 @@ listRouter.put('/:listId',(req,res) => {
     })
 })
 
-//Delete a list item from the database
+//Delete a list and its cards from the database
 listRouter.delete('/:listId',(req,res) => {
   listApi.deleteList(req.params.listId)
     .then(() => {
-      res.send('Delete an item')
+      cardApi.deleteAllCards(req.params.listId)
+        .then(()=> {
+          res.send('Delete an item')
+        })
     })
 })
 
