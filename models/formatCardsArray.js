@@ -3,21 +3,23 @@
 //Thif function iterates through a 2 dimensional array and pushes the parameter into an empty array
 //Params 
 //arr - a  2 dimensional array from the board controller
-function createNewObj(arr) {
-
-    let cardsArray = []
-    if (cardsArray.length === 0) {
-      for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
-          cardsArray.push(arr[i][j])
-        }
+function createNewObj(arr, boardId) {
+  let count = 0
+  let cardsArray = []
+  if (cardsArray.length === 0) {
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr[i].length; j++) {
+        cardsArray.push(arr[i][j])
+        cardsArray[count].boardObjectId = boardId
+        count = count + 1
       }
     }
-    return cardsArray
+    
   }
-  
-  
-  module.exports = {
-    createNewObj
-  }
-  
+  return cardsArray
+}
+
+
+module.exports = {
+  createNewObj
+}
