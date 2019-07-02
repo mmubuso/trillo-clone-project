@@ -1,18 +1,23 @@
 <h1>{{board.name}}</h1>
 {{#each lists}}
-<form action="{{}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
+<form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
     <ul class="list {{_id}}">{{name}}{{board.id}}</ul>
-    <input type="text" name="description" >
+    <input type="text" name="description">
     <button type="submit" value="">Add Card</button>
 </form>
 
 
 {{/each}}
 
-{{#each cards}}
-    <li class="card {{listObjectId}}">{{description}}</li>
-{{/each}}
-
+<footer>
+    {{#each cards}}
+    <li class="card {{listObjectId}}">{{description}}
+        <form method="POST" action="{{boardObjectId}}/lists/{{listObjectId}}/cards/{{_id}}?_method=DELETE">
+            <input type="submit" value="Delete" />
+        </form>
+    </li>
+    {{/each}}
+</footer>
 {{!-- Script that reorganizes our cards into the correct lists --}}
 <script>
     //variables
