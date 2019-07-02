@@ -91,7 +91,13 @@ boardRouter.put('/:boardId', (req, res) => {
 boardRouter.delete('/:boardId', (req, res) => {
   boardApi.deleteBoard(req.params.boardId)
     .then(() => {
-      res.send('Board was deleted')
+      listApi.deleteAllLists(req.params.boardId)
+        .then(()=>{
+          cardApi.deleteAllCards(req.params.listId)
+            .then(()=>{
+              res.send('deleted everything')
+            })
+        })
     })
 })
 
