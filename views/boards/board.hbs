@@ -1,36 +1,39 @@
 <h1>{{board.name}}</h1>
 {{#each lists}}
-<ul class="list {{_id}}">{{name}}</ul>
+<form action="{{}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
+    <ul class="list {{_id}}">{{name}}{{board.id}}</ul>
+    <input type="text" name="description" >
+    <button type="submit" value="">Add Card</button>
+</form>
+
+
 {{/each}}
 
 {{#each cards}}
-<ul>
     <li class="card {{listObjectId}}">{{description}}</li>
-</ul>
 {{/each}}
 
+{{!-- Script that reorganizes our cards into the correct lists --}}
 <script>
     //variables
     let lists = document.getElementsByClassName('list')
     let cards = document.getElementsByClassName('card')
-    
+
     //functions
     //append cards to approptiate list based on their class(list object Ids)
-    for(let i = 0; i < cards.length; i++ ){
+    for (let i = 0; i < cards.length; i++) {
         //This variable will hold the listObjectId property of the card object
         let cardListObjectId = cards[i].className.split(' ')
         let list = checkAgainstList(cardListObjectId[1])
-        if(typeof(list) != "undefined"){
-            console.log('Hey')
+        if (typeof (list) != "undefined") {
             list.appendChild(cards[i])
         }
     }
 
     //Checked to make sure the object ids match
-    function checkAgainstList(str){
-        for(let i = 0; i < lists.length; i++){
-            if(lists[i].className.indexOf(str) > 0){
-                console.log("hey")
+    function checkAgainstList(str) {
+        for (let i = 0; i < lists.length; i++) {
+            if (lists[i].className.indexOf(str) > 0) {
                 return lists[i]
             }
         }
