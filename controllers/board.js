@@ -60,10 +60,8 @@ boardRouter.get('/:boardId', (req, res) => {
           Promise.all(lists.map(list => cardApi.getAllCardsByListId(list._id)))
             .then(cards => {
               //send data to get formatted into a usuable form
-              cards = formatCardsApi.createNewObj(cards)
-              let objectId = board._id
-              cards.push({ objectId })
-              console.log(cards)
+              let boardObjectId = board._id
+              cards = formatCardsApi.createNewObj(cards, boardObjectId)
               res.render('boards/board', { board, lists, cards })
             })
         })
