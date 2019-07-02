@@ -4,10 +4,11 @@
 //Params 
 //arr - a  2 dimensional array from the board controller
 function createNewObj(arr) {
+
     let cardsArray = []
     if (cardsArray.length === 0) {
       for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++) {
+        for (let j = 0; j < arr[i].length; j++) {
           cardsArray.push(arr[i][j])
         }
       }
