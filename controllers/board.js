@@ -15,6 +15,7 @@ const express = require('express')
  * controller you need.
  * 
  */
+const formatCardsApi = require('../models/formatCardsArray.js')
 const boardApi = require('../models/board.js')
 const listApi = require('../models/list.js')
 const cardApi = require('../models/card.js')
@@ -27,7 +28,7 @@ const cardApi = require('../models/card.js')
  * TODO: rename this from boardRouter to something that makes sense. (e.g:
  * `shopRouter`)
  */
-const boardRouter = express.Router({mergeParams: true})
+const boardRouter = express.Router({ mergeParams: true })
 
 /* Step 4
  * 
@@ -37,48 +38,56 @@ const boardRouter = express.Router({mergeParams: true})
 /* Step 5
  *
  * TODO: delete this handler; it's just a sample
- */ 
+ */
 
- //Get all boards associated with accountId
- boardRouter.get('/',(req,res) => {
-   boardApi.getAllBoardsForOneAccount(req.params.accountId)
+
+
+
+//Get all boards associated with accountId
+boardRouter.get('/', (req, res) => {
+  boardApi.getAllBoardsForOneAccount(req.params.accountId)
     .then(accountBoards => {
       res.send(accountBoards)
     })
- })
+})
 
- //Get a speific board and all of its lists and cards
- boardRouter.get('/:boardId',(req,res) => {
-   boardApi.getBoard(req.params.boardId)
+//Get a speific board and all of its lists and cards
+boardRouter.get('/:boardId', (req, res) => {
+  boardApi.getBoard(req.params.boardId)
     .then(board => {
       listApi.getAllListsByBoardId(board)
         .then(lists => {
-            Promise.all(lists.map(list => cardApi.getAllCardsByListId(list._id)))
+          Promise.all(lists.map(list => cardApi.getAllCardsByListId(list._id)))
             .then(cards => {
-              res.send({board,lists,cards})
+              //send data to get formatted into a usuable form
+              cards = formatCardsApi.createNewObj(cards)
+              res.render('boards/board',{ board, lists, cards})
             })
-        })  
+        })
     })
- })
+    .catch((err) => {
+      console.log(err)
+    })
+})
 
 //creates a new trillo board 
-boardRouter.post('/',(req,res) => {
-  boardApi.createBoard(req.params.accountId,req.body)
+boardRouter.post('/', (req, res) => {
+  boardApi.createBoard(req.params.accountId, req.body)
     .then(() => {
       res.send('created new Board')
     })
 })
 
 //Update an exisiting board
-boardRouter.put('/:boardId',(req,res) => {
-  boardApi.updatedBoard(req.params.boardId,req.body)
+boardRouter.put('/:boardId', (req, res) => {
+  boardApi.updatedBoard(req.params.boardId, req.body)
     .then(() => {
       res.send('Updated Board')
     })
 })
 
 //Delete an exisiting board
-boardRouter.delete('/:boardId',(req,res) => {
+boardRouter.delete('/:boardId', (req, res) => {
   boardApi.deleteBoard(req.params.boardId)
     .then(() => {
       res.send('Board was deleted')
