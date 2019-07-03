@@ -1,31 +1,31 @@
-# mehn-template-project
+# Trillo - A Trello Clone
 
-# Setup A New Project From This Template
-
-If you are starting a new project do the following:
-
-1. copy/download this directory to where you new project is located and rename
-   it to the name of your project.
-1. change your directory (`cd`) into the copied project template
-1. `npm install`
-1. `node ./server.js`
-1. In a new terminal run `curl localhost:3000/helloworld`. You should see
-   `hello world!` as the output. From there your server template works!
-1. see the `controllers`, `models`, and `views` directories' `readme.md` files
-
-# Setup A New Project Without This Template
-
-If you want to start a project without using this template directory do the
-following:
+General Assembly SEI July 8th  - Project 2
 
 
-1. `mkdir <project-name>`
-1. `cd <project-name>`
-1. `echo "# <project-name>" > readme.md`
-1. `git init`
-1. `git add readme.md `
-1. `git commit -m "init repo with readme.md"`
-1. `npm init`
-1. `npm install express hbs method-override`
-1. `mkdir models views controllers`
-1. `touch ./server.js`
+- Project: 
+- Trello Board: https://trello.com/b/Dhl7mB13/trello-clone
+- GitHub: https://github.com/mmubuso/trillo-clone-project
+
+## Overview
+The goal of this project was to create a full stack clone of the popular con bon project website Trello using the MEHN stack (MongoDB Express Handlebars and NodeJs).
+
+![Picture of Trillo](N/A)
+
+
+## Wireframe
+!["A Wireframe of Trillo"](https://github.com/mmubuso/trillo-clone-project/blob/master/trillo-wireframe.jpg)
+
+## Technologies Used
+- Languages --> HTML, CSS3, JavaScript, Handlebars, NodeJs
+- Backend Frameworks --> Express, Mongoose
+- Frontend Framework --> Bulma.io
+
+## Future Developments/Improvements
+
+#### Phase 1
+- Incorporate drag and drop API so that users can freely move cards
+- Refector using ajax and react to get more dynamic website
+
+
+
