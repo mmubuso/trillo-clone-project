@@ -2,13 +2,30 @@
 <div>
     <div>{{account.name}}</div>
     <div>{{account.username}}</div>
+
     <h3>Boards</h3>
-    {{#each boards}}
-    <div><a href="/accounts/{{accountObjectId}}/boards/{{_id}}">{{name}}</a></div>
-    {{/each}}
-    <form method="POST" action="/accounts/{{account._id}}?_method=DELETE">
-        <input type="submit" value="Delete" />
+    {{!-- Account invfo --}}
+    <form action="/accounts/{{account._id}}/boards/" method="post">
+        <input type="text" name="name" id="new-board">
+        <input type="submit" value="New Board">
     </form>
+
+    {{!-- Display all boards --}}
+    {{#each boards}}
+    <form method="POST" action="/accounts/{{accountObjectId}}/boards/{{_id}}?_method=DELETE">
+        <div><a href="/accounts/{{accountObjectId}}/boards/{{_id}}">{{name}}</a></div>
+        <input type="submit" value="Delete Board">
+    </form>
+    <br>
+    {{/each}}
+
+    {{!-- Delete current account --}}
+    <br>
+    <form method="POST" action="/accounts/{{account._id}}?_method=DELETE">
+        <input type="submit" value="Delete Account" />
+    </form>
+
+    {{!-- Edit an accounts form--}}
     <form method="Get" action="/accounts/{{account._id}}/edit">
         <input type="submit" value="Edit Account" />
     </form>
