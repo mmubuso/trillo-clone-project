@@ -1,9 +1,15 @@
 <h1>{{board.name}}</h1>
+{{!-- Form creating a new list --}}
+<form action="{{board._id}}/lists/" class="add-list" method="post">
+    <label for="add-list">New List</label>
+    <input id="add-list" type="text" name="name">
+    <button type="submit">Create</button>
+</form>
 
 {{!-- Display the lists and cards together --}}
 {{#each lists}}
 <div class="class">
-    
+
 {{!-- Delete Button for list --}}
 <form action="{{boardObjectId}}/lists/{{_id}}?_method=DELETE" method="POST">
     <input type="submit" value="Delete List">
