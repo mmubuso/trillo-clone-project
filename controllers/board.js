@@ -75,7 +75,7 @@ boardRouter.get('/:boardId', (req, res) => {
 boardRouter.post('/', (req, res) => {
   boardApi.createBoard(req.params.accountId, req.body)
     .then(() => {
-      res.send('created new Board')
+      res.redirect(`/accounts/${req.params.accountId}/`)
     })
 })
 
@@ -95,7 +95,7 @@ boardRouter.delete('/:boardId', (req, res) => {
         .then(()=>{
           cardApi.deleteAllCards(req.params.listId)
             .then(()=>{
-              res.send('deleted everything')
+              res.redirect(`/accounts/${req.params.accountId}/`)
             })
         })
     })
