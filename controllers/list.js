@@ -47,7 +47,7 @@ listRouter.get('/:listId',(req,res) => {
 listRouter.post('/',(req,res) => {
   listApi.createList(req.params.boardId, req.body)
     .then(() => {
-      res.send('list was created')
+      ures.send('list was created')
     })
 })
 
@@ -65,7 +65,7 @@ listRouter.delete('/:listId',(req,res) => {
     .then(() => {
       cardApi.deleteAllCards(req.params.listId)
         .then(()=> {
-          res.send('Delete an item')
+          res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
         })
     })
 })
