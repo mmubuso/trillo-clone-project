@@ -1,13 +1,23 @@
 <h1>{{board.name}}</h1>
+
+{{!-- Display the lists and cards together --}}
 {{#each lists}}
+<div class="class">
+    
+{{!-- Delete Button for list --}}
+<form action="{{boardObjectId}}/lists/{{_id}}?_method=DELETE" method="POST">
+    <input type="submit" value="Delete List">
+</form>
+
+{{!-- List container --}}
 <form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
-    <ul class="list {{_id}}">{{name}}{{board.id}}</ul>
+    <ul class="list {{_id}}">{{name}}</ul>
     <input type="text" name="description">
     <button type="submit" value="">Add Card</button>
 </form>
-
-
+</div>
 {{/each}}
+
 
 <footer>
     {{#each cards}}
@@ -18,6 +28,8 @@
     </li>
     {{/each}}
 </footer>
+
+
 {{!-- Script that reorganizes our cards into the correct lists --}}
 <script>
     //variables
