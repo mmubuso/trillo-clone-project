@@ -48,7 +48,7 @@ cardRouter.get('/:cardId', (req, res) => {
 cardRouter.post('/', (req, res) => {
   cardApi.createCard(req.params.listId, req.body)
     .then(() => {
-      res.send("card created")
+      res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
     })
 })
 
@@ -64,7 +64,7 @@ cardRouter.put('/:cardId', (req, res) => {
 cardRouter.delete('/:cardId', (req, res) => {
   cardApi.deleteCard(req.params.cardId)
     .then(() => {
-      res.send('Card was deleted')
+      res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
     })
 })
 
