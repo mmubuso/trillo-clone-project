@@ -47,7 +47,7 @@ listRouter.get('/:listId',(req,res) => {
 listRouter.post('/',(req,res) => {
   listApi.createList(req.params.boardId, req.body)
     .then(() => {
-      ures.send('list was created')
+      res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
     })
 })
 
