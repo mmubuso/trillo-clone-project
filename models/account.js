@@ -28,7 +28,7 @@ const AccountSchema = new mongoose.Schema({
   },
   profilePicture:{
     type: String,
-    default: 'default-bg'
+    default: 'images/default-bg.jpeg'
   }
 })
 
