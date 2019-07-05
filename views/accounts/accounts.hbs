@@ -1,13 +1,22 @@
-<h1>Accounts</h1>
-<form action="/accounts/new" method="get">
-    <button type="submit">Create Account</button>
-</form>
-
-{{#each accounts}}
-    <div>
-        <div>name: <a href="/accounts/{{_id}}">{{name}}</a> </div>
-        <div>username: {{username}}</div>
-        <div>_id {{_id}} </div>
+<div class="container">
+    <div class="accounts jumbotron w-60">
+        <h1 class="display-1 rounded-pill">Accounts</h1>
+        <form  action="/accounts/new" method="get">
+            <button type="submit">Create Account</button>
+        </form>
+        {{#each accounts}}
+        <div class="row mb-4 align-items-center">
+            <div class="col card account-card">
+                <img src="..." class="card-img-top" alt="..." width="auto" height="200px">
+            </div>
+            <div class="col card account-card">
+                <h2 class="display-4"> <a href="/accounts/{{_id}}">{{name}}</a> </h2>
+                <label for="username">Username</label>
+                <h3 id="username"> {{username}}</h3>
+                <label for="numberOfBoards">Amount Of Boards</label>
+                <h3 id="numberOfBoards"> {{numberOfBoards}}</h3>
+            </div>
+        </div>
+        {{/each}}
     </div>
-    <br>
-{{/each}}
+</div>
