@@ -1,13 +1,13 @@
 <div class="container">
     <div class="accounts jumbotron w-60">
-        <form class="row form-1 justify-content-between align-items-center"action="/accounts/new" method="get">
-            <h1 class="display-1 rounded-pill col-4">Accounts</h1>
-            <button type="submit" class="btn btn-primary btn-lg col-4">Create Account</button>
+        <form class="row form-1 justify-content-around align-items-center"action="/accounts/new" method="get">
+            <h1 class="display-3 rounded-pill col-4">Accounts</h1>
+            <button type="submit" class="btn btn-outline-primary btn-sm col-2" style="font-size: 1.5em">Create Account</button>
         </form>
         {{#each accounts}}
         <div class="row mb-2 justify-content-center">
             <div class="col-3 card account-card">
-                <img src="..." class="card-img-top" alt="..." width="auto" height="200px">
+                <img src="{{profilePicture}}" class="card-img-top img-thumbnail my-auto" alt="profile picture" width="200px" height="200px">
             </div>
             <div class="col-7 card account-card">
                 <h2 class="display-4"> <a href="/accounts/{{_id}}">{{name}}</a> </h2>
