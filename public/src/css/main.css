@@ -1,9 +1,18 @@
 
 /* Background styles*/
-/* body{
-    background-color: ;
-} */
+body{
+    background-color: #3C3744;
+}
 
+/* Style for navbar */
+html nav{
+    background-color: #B4C5E4 !important;
+    color: whitesmoke;
+}
+
+nav .navbar-brand{
+    color: whitesmoke !important;
+}
 
 /*Multiple accounts stylesheet page */
 /* Styling for cards */
@@ -13,4 +22,20 @@
 
 .account-card{
     height: 100%;
+}
+
+.accounts .display-1{
+    color: whitesmoke;
+}
+
+.accounts .form-1{
+   height: auto;
+}
+.accounts .form-1 button{
+    height: 65px;
+}
+
+/* Style for accounts container */
+.container .accounts{
+    background-color: #B4C5E4;
 }
