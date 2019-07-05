@@ -31,7 +31,7 @@ accountRouter.get('/new', (req, res) => {
 accountRouter.get('/:accountId/edit', (req, res) => {
   accountApi.getAccount(req.params.accountId)
     .then(account => {
-      res.render('accounts/editFormAccount',{account})
+      res.render('accounts/editFormAccount', { account })
     })
 })
 
@@ -41,7 +41,7 @@ accountRouter.get('/:accountId', (req, res) => {
     .then(account => {
       boardApi.getAllBoardsForOneAccount(account._id)
         .then(boards => {
-          res.render('accounts/account', {boards, account})
+          res.render('accounts/account', { boards, account })
         })
     })
 })
