@@ -25,6 +25,10 @@ const AccountSchema = new mongoose.Schema({
   numberOfBoards: {
     type: Number,
     default: 0
+  },
+  profilePicture:{
+    type: String,
+    default: 'default-bg'
   }
 })
 
