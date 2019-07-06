@@ -24,7 +24,8 @@ const BoardSchema = new mongoose.Schema({
     required: true
   },
   backgroundColor:{
-    type: String
+    type: String,
+    default: '#ebc8b2'
   },
   numberOfLists: {
     type: Number,
