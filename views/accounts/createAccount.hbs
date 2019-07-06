@@ -1,10 +1,27 @@
-<form method="POST" action="/accounts">
+<div class="mt-4 bg-create-account">
+<form class="container p-4" method="POST" action="/accounts">
 
   <!--
     Template for creating input form for a string object key called stringMember
     NOTE: for numeric input fields use `type="number"`
   --->
-  <input type="text" placeholder="name" name="name" />
-  <input type="text" placeholder="username" name="username" />
-  <input type="submit" value="Create Account" />
+  <div class="form-row mb-4 justify-content-center">
+      <div class="col-4">
+        <input type="text" class="form-control" value="{{account.name}}" name="name" placeholder="Full Name">
+      </div>
+      <div class="col-4">
+        <input type="text" class="form-control" value="{{account.username}}" name="username" placeholder="Username">
+      </div>
+    </div>
+    <div class="form-row justify-content-center mb-4">
+      <div class="col-8">
+        <input type="text" class="form-control" name="profilePicture" value="{{account.profilePicture}}" placeholder="Enter link to Profile Picture">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-4 ">
+        <button class="form-control" type="submit">Create Account</button>
+      </div>
+    </div>
 </form>
+</div>
