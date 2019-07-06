@@ -1,6 +1,6 @@
-<h1>{{board.name}}</h1>
+<h1>{{boards.name}}</h1>
 {{!-- Form creating a new list --}}
-<form action="{{board._id}}/lists/" class="add-list" method="post">
+<form action="{{boards._id}}/lists/" class="add-list" method="post">
     <label for="add-list">New List</label>
     <input id="add-list" type="text" name="name">
     <button type="submit">Create</button>
