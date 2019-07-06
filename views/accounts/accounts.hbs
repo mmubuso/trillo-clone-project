@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4">
     <div class="accounts jumbotron w-60">
         <form class="row form-1 justify-content-around align-items-center"action="/accounts/new" method="get">
             <h1 class="display-3 rounded-pill col-4">Accounts</h1>
@@ -15,6 +15,7 @@
                 <h3 id="username"> {{username}}</h3>
                 <label for="numberOfBoards">Amount Of Boards</label>
                 <h3 id="numberOfBoards"> {{numberOfBoards}}</h3>
+                <a href="/accounts/{{_id}}/edit">Edit Account</a>
             </div>
         </div>
         {{/each}}
