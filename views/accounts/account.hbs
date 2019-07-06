@@ -1,32 +1,26 @@
-<h1>Account Settings</h1>
-<div>
-    <div>{{account.name}}</div>
-    <div>{{account.username}}</div>
+<div class="container mx-auto">
 
-    <h3>Boards</h3>
     {{!-- Account invfo --}}
-    <form action="/accounts/{{account._id}}/boards/" method="post">
-        <input type="text" name="name" id="new-board">
-        <input type="submit" value="New Board">
+    <form class="row justify-content-center my-4" action="/accounts/{{account._id}}/boards/" method="post">
+        <h3 class="col-3">Boards</h3>
+        <input class="col-3" type="text" name="name" id="new-board">
+        <input class="col-3" type="submit" value="New Board">
     </form>
 
     {{!-- Display all boards --}}
-    {{#each boards}}
-    <form method="POST" action="/accounts/{{accountObjectId}}/boards/{{_id}}?_method=DELETE">
-        <div><a href="/accounts/{{accountObjectId}}/boards/{{_id}}">{{name}}</a></div>
-        <input type="submit" value="Delete Board">
-    </form>
-    <br>
-    {{/each}}
-
+    <div class="row justify-content-center mt-4">
+        {{#each boards}}
+        <form class="col-sm-12 col-md-3 boards-card m-2 p-3" method="POST"
+            action="/accounts/{{accountObjectId}}/boards/{{_id}}?_method=DELETE">
+            <div class="h3"><a href="/accounts/{{accountObjectId}}/boards/{{_id}}">{{name}}</a></div>
+            <input type="submit" value="Delete Board">
+        </form>
+        {{/each}}
+    </div>
     {{!-- Delete current account --}}
-    <br>
-    <form method="POST" action="/accounts/{{account._id}}?_method=DELETE">
+    <div class="row justify-content-center">
+    <form class="col-2" method="POST" action="/accounts/{{account._id}}?_method=DELETE">
         <input type="submit" value="Delete Account" />
     </form>
-
-    {{!-- Edit an accounts form--}}
-    <form method="Get" action="/accounts/{{account._id}}/edit">
-        <input type="submit" value="Edit Account" />
-    </form>
+    </div>
 </div>
