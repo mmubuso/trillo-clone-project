@@ -1,37 +1,53 @@
-
 /* Background styles*/
-body{
-    background-color: #3C3744;
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
+    background-size: cover;
+    height: 100vh;
+    background-attachment: fixed;
 }
 
+
 /* Style for navbar */
-html nav{
-    background-color: #B4C5E4 !important;
+
+html nav {
+    background-color: rgb(16, 22, 32) !important;
     color: whitesmoke;
 }
 
-nav .navbar-brand{
+nav .navbar-brand {
     color: whitesmoke !important;
 }
 
+
 /*Multiple accounts stylesheet page */
+
+
 /* Styling for cards */
-.accounts .row{
+
+.accounts .row {
     height: 250px;
 }
 
-.account-card{
+.account-card {
     height: 100%;
-}
-
-.accounts .display-3{
+    background-color: rgb(16, 22, 32);
     color: whitesmoke;
 }
 
-.accounts .form-1{
-   height: auto;
+.account-card img {
+    height: 75%;
 }
-.accounts .form-1 button{
+
+.accounts .display-3 {
+    color: whitesmoke;
+}
+
+.accounts .form-1 {
+    height: auto;
+}
+
+.accounts .form-1 button {
     height: 65px;
     border-style: none;
     border-bottom-style: solid;
@@ -39,7 +55,31 @@ nav .navbar-brand{
     color: whitesmoke;
 }
 
+.accounts .form-1 button:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+
 /* Style for accounts container */
-.container .accounts{
-    background-color: #B4C5E4;
+
+.container .accounts {
+    background-color: rgba(180, 197, 228, 0);
+}
+
+
+/* edit account view styles */
+
+.edit-container {
+    margin: 10%;
+    border-radius: 50px;
+    padding: 5%;
+    width: 50%;
+    -webkit-box-shadow: -3px 9px 11px 0px rgba(0, 0, 0, 0.84);
+    -moz-box-shadow: -3px 9px 11px 0px rgba(0, 0, 0, 0.84);
+    box-shadow: -3px 9px 11px 0px rgba(0, 0, 0, 0.84);
+}
+
+.edit-profile {
+    height: 200px;
+    border-radius: 180%;
 }
