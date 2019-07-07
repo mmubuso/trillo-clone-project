@@ -128,6 +128,16 @@ nav .navbar-brand {
     margin-bottom: 5%;
 }
 
+/* Style for editing list name */
+.list-of-cards h2{
+    position: relative;
+}
+.list-of-cards i{
+    position: absolute;
+    left: 90%;
+    top: 10%;
+    font-size: 0.8em;
+}
 /* style for card modal */
 .modal-input{
     width: 20em;
@@ -135,3 +145,4 @@ nav .navbar-brand {
     overflow-y: scroll;
     overflow-x: auto
 }
+
