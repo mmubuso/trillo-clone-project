@@ -1,11 +1,12 @@
 //variables
-let editButton = $('.list-of-cards .fa-edit')
-
+let editButtonForList = $('.list-of-cards .fa-edit')
+let editBoard = $('.board-edit')
 //functions
-let changeListName = (evt)=>{
-    let listName = evt.target.parentElement.innerText
-    $(evt.target.parentElement).replaceWith(`<input type="text" name="name" value=${listName}><input type="submit" value="Update">`)
+let changeName = (evt)=>{
+    let listName = evt.innerText
+    $(evt).replaceWith(`<input type="text" name="name" value=${listName}><input type="submit" value="Update">`)
 }
 
 //eventlisteners
-editButton.on('click',(evt)=> changeListName(evt))
+editButtonForList.on('click',(evt)=> changeName(evt.target.parentElement))
+editBoard.on('click',(evt)=> changeName(evt.target))

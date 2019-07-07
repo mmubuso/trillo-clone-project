@@ -1,10 +1,11 @@
 <main class="container">
-    <h1>{{boards.name}}</h1>
+    <form class="m-2" action="{{boards._id}}?_method=PUT" method="POST">
+        <h1 class="board-edit">{{boards.name}}</h1>
+    </form>
     {{!-- Form creating a new list --}}
-    <form action="{{boards._id}}/lists/" class="add-list" method="post">
-        <label for="add-list">New List</label>
+    <form class="m-2" action="{{boards._id}}/lists/" class="add-list" method="post">
         <input id="add-list" type="text" name="name">
-        <button type="submit">Create</button>
+        <button type="submit">New List</button>
     </form>
 
     {{!-- Display the lists and cards together --}}
@@ -23,7 +24,7 @@
             <form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
                 <ul class="list {{_id}}"></ul>
                 <input type="text" name="description">
-                <button type="submit" value="">Add Card</button>
+                <button class="fas fa-plus" type="submit"></button>
             </form>
         </div>
         {{/each}}
