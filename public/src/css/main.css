@@ -146,3 +146,18 @@ nav .navbar-brand {
     overflow-x: auto
 }
 
+/* change style for inputs */
+input[type=text]{
+    border-style: none;
+    background-color: rgba(240, 248, 255, 0);
+    border-bottom-style: solid;
+    font-size: 1.5em;
+}
+
+button[type=submit]{
+    border-radius: 20px;
+}
+
+
+
+
