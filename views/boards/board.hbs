@@ -5,7 +5,7 @@
     {{!-- Form creating a new list --}}
     <form class="m-2" action="{{boards._id}}/lists/" class="add-list" method="post">
         <input id="add-list" type="text" name="name">
-        <button type="submit">New List</button>
+        <button class="btn btn-success" type="submit">New List</button>
     </form>
 
     {{!-- Display the lists and cards together --}}
@@ -24,7 +24,7 @@
             <form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
                 <ul class="list {{_id}}"></ul>
                 <input type="text" name="description">
-                <button class="fas fa-plus" type="submit"></button>
+                <button class="btn btn-success" type="submit">Add Card</button>
             </form>
         </div>
         {{/each}}
@@ -35,14 +35,19 @@
 
 <footer>
     {{#each cards}}
-    <li class="card {{listObjectId}}">{{description}}
+    <li class="card {{listObjectId}}"><p>{{description}}</p>
+        <div class="action-buttons">
         <form method="POST" action="{{boardObjectId}}/lists/{{listObjectId}}/cards/{{_id}}?_method=DELETE">
-            <input type="submit" value="Delete" />
+            {{!-- <input type="submit" value="Delete" /> --}}
+            <button type="button" class="btn btn-danger btn-sm" > Delete
+            Card
+        </button>
         </form>
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal{{@index}}"> Edit
             Card
         </button>
+        </div>
 
         <!-- Modal for editing card -->
         <div class="modal fade" id="myModal{{@index}}" role="dialog">
