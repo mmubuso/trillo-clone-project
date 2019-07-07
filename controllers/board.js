@@ -83,7 +83,7 @@ boardRouter.post('/', (req, res) => {
 boardRouter.put('/:boardId', (req, res) => {
   boardApi.updatedBoard(req.params.boardId, req.body)
     .then(() => {
-      res.send('Updated Board')
+      res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
     })
 })
 
