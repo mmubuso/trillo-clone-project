@@ -1,3 +1,4 @@
+<main class="container">
 <h1>{{boards.name}}</h1>
 {{!-- Form creating a new list --}}
 <form action="{{boards._id}}/lists/" class="add-list" method="post">
@@ -7,23 +8,25 @@
 </form>
 
 {{!-- Display the lists and cards together --}}
-{{#each lists}}
-<div class="class">
+<div class="board-of-lists">
+    {{#each lists}}
+    <div class="list-of-cards">
+        <h2>{{name}}</h2>
+        {{!-- Delete Button for list --}}
+        <form action="{{boardObjectId}}/lists/{{_id}}?_method=DELETE" method="POST">
+            <input type="submit" value="Delete List">
+        </form>
 
-{{!-- Delete Button for list --}}
-<form action="{{boardObjectId}}/lists/{{_id}}?_method=DELETE" method="POST">
-    <input type="submit" value="Delete List">
-</form>
-
-{{!-- List container --}}
-<form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
-    <ul class="list {{_id}}">{{name}}</ul>
-    <input type="text" name="description">
-    <button type="submit" value="">Add Card</button>
-</form>
+        {{!-- List container --}}
+        <form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
+            <ul class="list {{_id}}"></ul>
+            <input type="text" name="description">
+            <button type="submit" value="">Add Card</button>
+        </form>
+    </div>
+    {{/each}}
 </div>
-{{/each}}
-
+</main>
 
 <footer>
     {{#each cards}}
