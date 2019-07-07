@@ -1,32 +1,34 @@
 <main class="container">
-<h1>{{boards.name}}</h1>
-{{!-- Form creating a new list --}}
-<form action="{{boards._id}}/lists/" class="add-list" method="post">
-    <label for="add-list">New List</label>
-    <input id="add-list" type="text" name="name">
-    <button type="submit">Create</button>
-</form>
+    <h1>{{boards.name}}</h1>
+    {{!-- Form creating a new list --}}
+    <form action="{{boards._id}}/lists/" class="add-list" method="post">
+        <label for="add-list">New List</label>
+        <input id="add-list" type="text" name="name">
+        <button type="submit">Create</button>
+    </form>
 
-{{!-- Display the lists and cards together --}}
-<div class="board-of-lists">
-    {{#each lists}}
-    <div class="list-of-cards">
-        <h2>{{name}}</h2>
-        {{!-- Delete Button for list --}}
-        <form action="{{boardObjectId}}/lists/{{_id}}?_method=DELETE" method="POST">
-            <input type="submit" value="Delete List">
-        </form>
+    {{!-- Display the lists and cards together --}}
+    <div class="board-of-lists">
+        {{#each lists}}
+        <div class="list-of-cards">
+            <h2>{{name}}</h2>
+            {{!-- Delete Button for list --}}
+            <form action="{{boardObjectId}}/lists/{{_id}}?_method=DELETE" method="POST">
+                <input type="submit" value="Delete List">
+            </form>
 
-        {{!-- List container --}}
-        <form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
-            <ul class="list {{_id}}"></ul>
-            <input type="text" name="description">
-            <button type="submit" value="">Add Card</button>
-        </form>
+            {{!-- List container --}}
+            <form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
+                <ul class="list {{_id}}"></ul>
+                <input type="text" name="description">
+                <button type="submit" value="">Add Card</button>
+            </form>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
-</div>
 </main>
+
+
 
 <footer>
     {{#each cards}}
@@ -34,6 +36,26 @@
         <form method="POST" action="{{boardObjectId}}/lists/{{listObjectId}}/cards/{{_id}}?_method=DELETE">
             <input type="submit" value="Delete" />
         </form>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal{{@index}}"> Edit
+            Card
+        </button>
+
+        <!-- Modal for editing card -->
+        <div class="modal fade" id="myModal{{@index}}" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <form method="POST" action="{{boardObjectId}}/lists/{{listObjectId}}/cards/{{_id}}?_method=PUT"
+                        class="modal-body">
+                        <textarea class="modal-input" type="text" name="description">{{description}}</textarea>
+                        <input type="submit" class="btn btn-outline-default" value="Edit">
+                    </form>
+                </div>
+
+            </div>
+        </div>
     </li>
     {{/each}}
 </footer>

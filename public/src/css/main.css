@@ -109,8 +109,8 @@ nav .navbar-brand {
 .list-of-cards {
     flex: 0 0 auto;
     overflow-y: hidden;
-    min-width: 20em;
-    font-size: 1vw;
+    width: 21em;
+    font-size: 1em;
     background-color: antiquewhite;
     margin-right: 1em;
     border-radius: 5px;
@@ -126,4 +126,12 @@ nav .navbar-brand {
 }
 .list-of-cards li{
     margin-bottom: 5%;
+}
+
+/* style for card modal */
+.modal-input{
+    width: 20em;
+    height: 10em;
+    overflow-y: scroll;
+    overflow-x: auto
 }
