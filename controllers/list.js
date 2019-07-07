@@ -26,7 +26,7 @@ const listApi = require('../models/list.js')
  * TODO: rename this from templateRouter to something that makes sense. (e.g:
  * `shopRouter`)
  */
-const listRouter = express.Router({mergeParams: true})
+const listRouter = express.Router({ mergeParams: true })
 
 listRouter.get('/', (req, res) => {
   listApi.getAllListsByBoardId(req.params.boardId)
@@ -36,7 +36,7 @@ listRouter.get('/', (req, res) => {
 })
 
 //Get a single list 
-listRouter.get('/:listId',(req,res) => {
+listRouter.get('/:listId', (req, res) => {
   listApi.getList(req.params.listId)
     .then(list => {
       res.send(list)
@@ -44,7 +44,7 @@ listRouter.get('/:listId',(req,res) => {
 })
 
 //Create a list item to the database
-listRouter.post('/',(req,res) => {
+listRouter.post('/', (req, res) => {
   listApi.createList(req.params.boardId, req.body)
     .then(() => {
       res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
@@ -52,19 +52,19 @@ listRouter.post('/',(req,res) => {
 })
 
 //Update a list item from the database
-listRouter.put('/:listId',(req,res) => {
-  listApi.updateList(req.params.listId,req.body)
+listRouter.put('/:listId', (req, res) => {
+  listApi.updateList(req.params.listId, req.body)
     .then(() => {
-      res.send('Updated List')
+      res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
     })
 })
 
 //Delete a list and its cards from the database
-listRouter.delete('/:listId',(req,res) => {
+listRouter.delete('/:listId', (req, res) => {
   listApi.deleteList(req.params.listId)
     .then(() => {
       cardApi.deleteAllCards(req.params.listId)
-        .then(()=> {
+        .then(() => {
           res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
         })
     })
