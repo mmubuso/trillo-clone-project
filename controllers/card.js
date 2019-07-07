@@ -56,7 +56,7 @@ cardRouter.post('/', (req, res) => {
 cardRouter.put('/:cardId', (req, res) => {
   cardApi.updateCard(req.params.cardId, req.body)
     .then(() => {
-      res.send('Card was updated')
+      res.redirect(`/accounts/${req.params.accountId}/boards/${req.params.boardId}`)
     })
 })
 
