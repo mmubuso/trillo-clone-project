@@ -16,6 +16,9 @@ The goal of this project was to create a full stack clone of the popular con bon
 ## Wireframe
 !["A Wireframe of Trillo"](https://github.com/mmubuso/trillo-clone-project/blob/master/trillo-wireframe.jpg)
 
+## ERD
+!["ERD"](https://github.com/mmubuso/trillo-clone-project/blob/master/Trillo.png)
+
 ## Technologies Used
 - Backend --> Express, Mongoose, NodeJs
 - Frontend --> Bootstrap 4, JavaScript, Handlebars, CSS
