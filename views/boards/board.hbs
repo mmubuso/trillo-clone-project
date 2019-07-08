@@ -4,7 +4,7 @@
     </form>
     {{!-- Form creating a new list --}}
     <form class="m-2" action="{{boards._id}}/lists/" class="add-list" method="post">
-        <input id="add-list" type="text" name="name">
+        <input placeholder="New List" id="add-list" type="text" name="name">
         <button class="btn btn-success" type="submit">New List</button>
     </form>
 
@@ -22,8 +22,8 @@
 
             {{!-- List container --}}
             <form action="{{boardObjectId}}/lists/{{_id}}/cards" class="lists {{name}}" method="post">
-                <ul class="list {{_id}}"></ul>
-                <input type="text" name="description">
+                <ul class="dropTarget list {{_id}} pb-4"></ul>
+                <input placeholder="New card" type="text" name="description">
                 <button class="btn btn-success" type="submit">Add Card</button>
             </form>
         </div>
@@ -35,11 +35,11 @@
 
 <footer>
     {{#each cards}}
-    <li class="card {{listObjectId}}"><p>{{description}}</p>
+    <li class="card {{listObjectId}}" draggable="true" ondragstart=""><p>{{description}}</p>
         <div class="action-buttons">
         <form method="POST" action="{{boardObjectId}}/lists/{{listObjectId}}/cards/{{_id}}?_method=DELETE">
             {{!-- <input type="submit" value="Delete" /> --}}
-            <button type="button" class="btn btn-danger btn-sm" > Delete
+            <button type="submit" class="btn btn-danger btn-sm" > Delete
             Card
         </button>
         </form>
