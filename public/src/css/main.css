@@ -127,7 +127,9 @@ nav .navbar-brand {
 .list-of-cards li{
     margin-bottom: 5%;
 }
-
+.list-of-cards ul{
+    padding-bottom: 20px;
+}
 .list-of-cards li p{
     padding: 5px;
 }
@@ -160,7 +162,16 @@ input[type=text]{
     border-style: none;
     background-color: rgba(240, 248, 255, 0);
     border-bottom-style: solid;
+    border-bottom-color: black;
     font-size: 1.5em;
+    opacity: 1;
+}
+input[type=text]:hover{
+    opacity: 1;
+    box-shadow: 
+    0 0 30px #3245f3;            /* outer white */
+    /* -10px 0 20px #f0f;       outer left magenta */
+    /* 10px 0 20px #0ff;     */
 }
 
 button[data-toggle=modal]{
