@@ -35,7 +35,7 @@
 
 <footer>
     {{#each cards}}
-    <li class="card {{listObjectId}}" draggable="true" ondragstart=""><p>{{description}}</p>
+    <li class="card {{listObjectId}} {{_id}}" draggable="true" ondragstart=""><p>{{description}}</p>
         <div class="action-buttons">
         <form method="POST" action="{{boardObjectId}}/lists/{{listObjectId}}/cards/{{_id}}?_method=DELETE">
             {{!-- <input type="submit" value="Delete" /> --}}
